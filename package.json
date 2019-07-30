@@ -2,7 +2,9 @@
 	"name": "ftpfilesync",
 	"displayName": "FtpFileSync",
 	"description": "Synchronise project files with ftp",
-	"version": "0.0.1",
+	"version": "1.0.0",
+	"publisher": "BThiebaut",
+	"repository" : "https://github.com/BThiebaut/vscode-FtpFilesSync",
 	"engines": {
 		"vscode": "^1.36.0"
 	},
