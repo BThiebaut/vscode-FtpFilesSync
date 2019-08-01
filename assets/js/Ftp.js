@@ -14,19 +14,20 @@ this.getExcludePath = function(){
 this.put = function(file){
     return new Promise(function(resolve, reject) {
         let conf     = vscode.workspace.getConfiguration('ftpfilesync');
-        if (oConnection === null){
-            oConnection = {
-                host     : conf.host,
-                user     : conf.user,
-                password : conf.password,
-                port     : conf.port,
-            }   
+        
+        oConnection = {
+            host     : conf.host,
+            user     : conf.user,
+            password : conf.password,
+            port     : conf.port,
         }
+        
         if (ftp === null){
             ftp = new PromiseFtp();
         }
 
-        let ftpRoot = conf.rootPath;
+        let ftpRoot = conf.ftpRootPath;
+        let localRoot = conf.localRootPath; // TODO
         let wkPath = vscode.workspace.rootPath;
         let fsPath = file.uri.fsPath.replace(wkPath, '').replace(/\\/g, '/');
         let remotePath = './' + ftpRoot + fsPath;
@@ -45,10 +46,14 @@ this.put = function(file){
 
         try {
             ftp.connect(oConnection)
-            .then(function (serverMessage) {
+            .then(serverMessage => {
+              console.log('PUT : ', file.uri.fsPath, remotePath);
               ftp.put(file.uri.fsPath, remotePath); // Need to be called twice to work... why ?
               ftp.put(file.uri.fsPath, remotePath);
-            }).then(function () {
+            }, errorMsg => {
+                console.log(errorMsg);
+                reject(errorMsg);
+            }).then(() => {
               ftp.end();
               resolve(file);
             });

@@ -2,11 +2,11 @@
 	"name": "ftpfilesync",
 	"displayName": "FtpFileSync",
 	"description": "Synchronise project files with ftp",
-	"version": "1.0.0",
+	"version": "1.0.3",
 	"publisher": "BThiebaut",
-	"repository" : "https://github.com/BThiebaut/vscode-FtpFilesSync",
+	"repository": "https://github.com/BThiebaut/vscode-FtpFilesSync",
 	"engines": {
-		"vscode": "^1.36.0"
+		"vscode": "^1.33.0"
 	},
 	"categories": [
 		"Other"
@@ -19,41 +19,55 @@
 		"configuration": [
 			{
 				"title": "FtpFilesSync",
+				"scope": "resource",
 				"properties": {
 					"ftpfilesync.enabled": {
 						"type": "boolean",
 						"default": true,
-						"description": "Enable or disable ftpFileSync for this workspace. Workspace need to be reloaded to take effect."
+						"description": "Enable or disable ftpFileSync for this workspace. Workspace need to be reloaded to take effect.",
+						"scope": "resource"
 					},
 					"ftpfilesync.host": {
 						"type": "string",
 						"default": "",
-						"description": "Ftp host"
+						"description": "Ftp host",
+						"scope": "resource"
 					},
 					"ftpfilesync.user": {
 						"type": "string",
 						"default": "",
-						"description": "Ftp user"
+						"description": "Ftp user",
+						"scope": "resource"
 					},
 					"ftpfilesync.password": {
 						"type": "string",
 						"default": "",
-						"description": "Ftp password"
+						"description": "Ftp password",
+						"scope": "resource"
 					},
 					"ftpfilesync.port": {
 						"type": "string",
 						"default": "21",
-						"description": "Ftp port"
+						"description": "Ftp port",
+						"scope": "resource"
 					},
-					"ftpfilesync.rootPath": {
+					"ftpfilesync.ftpRootPath": {
 						"type": "string",
 						"default": "",
-						"description": "Path to the root of the project, from the FTP root folder without trailing slash (exemple : \"www/site\")"
+						"description": "Path to the root of the project, from the FTP root folder without trailing slash (exemple : \"www/site\")",
+						"scope": "resource"
+					},
+					"ftpfilesync.localRootPath": {
+						"type": "string",
+						"default": "",
+						"description": "Path to the root of the project, from the local root folder without trailing slash (exemple : \"www/site\")",
+						"scope": "resource"
 					},
 					"ftpfilesync.ignorePath": {
 						"type": "array",
 						"default": [],
-						"description": "Array of paths to ignore (use Regex) (exemple : [\"my\\/ignored\\/folder\", \"my\\/ignored\\/file\\.txt\"])"
+						"description": "Array of paths to ignore (use Regex) (exemple : [\"my\\/ignored\\/folder\", \"my\\/ignored\\/file\\.txt\"])",
+						"scope": "resource"
 					}
 				}
 			}
@@ -66,7 +80,7 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
 		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.36.0",
+		"@types/vscode": "^1.33.0",
 		"eslint": "^5.13.0",
 		"glob": "^7.1.4",
 		"mocha": "^6.1.4",
