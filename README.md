@@ -8,9 +8,6 @@ Only the saved file will be send.
 
 Settings can be put en global settings, but user settings.json file inside the .vscode folder is better.
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
 * `ftpfilesync.enabled` : Enable or disable ftpFileSync for this workspace. Workspace need to be reloaded to take effect.
 * `ftpfilesync.host` : Ftp host
 * `ftpfilesync.user` : Ftp user
